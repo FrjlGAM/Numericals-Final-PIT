@@ -93,18 +93,19 @@ if st.button("▶️ Run Polynomial Regression"):
 
     terms = []
     if abs(intercept) > 1e-8:
-        terms.append(f"{intercept:.4f}")
+        terms.append(f"{intercept:.2f}")
 
     for i in range(1, len(coefs)):
         coef = coefs[i]
         if abs(coef) > 1e-8:
             power_str = "x" if i == 1 else f"x^{i}"
-            formatted = f"{abs(coef):.4f}{power_str}"
+            formatted = f"{abs(coef):.2f}{power_str}"
             if not terms:
                 terms.append(formatted if coef > 0 else f"-{formatted}")
             else:
                 sign = "+" if coef > 0 else "-"
                 terms.append(f"{sign} {formatted}")
+
 
     equation = "y = " + " ".join(terms) if terms else "y = 0"
 
